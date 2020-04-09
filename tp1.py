@@ -25,7 +25,7 @@ def divisores(n):
             divisores += [i]
         i= i + 1
     if divisores != 0:
-        return True
+        return divisores
     
 divisores(7)
 
@@ -68,14 +68,16 @@ def numerosPrimos(n):
         i= i + 1
     return numerosPrimos
 
-numerosPrimos(5)
+numerosPrimos(13)
 
 # Funciones
 def iesimoPrimo(i):
-    n = 1000
-    return numerosPrimos(n)[i - 1]
-    
-iesimoPrimo(5)   
+    n = 1
+    while len(numerosPrimos(n)) < i + 1:
+        n += 1
+    return numerosPrimos(n)[i - 1]    
+
+iesimoPrimo(1200)
 
 def cantidadPrimosMenoresOIguales(n):
     return len(numerosPrimos(n + 1))
@@ -96,7 +98,5 @@ def sumaPrimerosPrimos(n): # REVISARRR
     return suma
 
 sumaPrimerosPrimos(5)
-iesimoPrimo(5)
-    
-    
+iesimoPrimo(5) 
     
