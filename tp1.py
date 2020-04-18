@@ -2,40 +2,10 @@
 
 # Alumnos: Julieta De Antonio, Maria Gomez Alzaga y Federico Rodriguez
 
-# El numero primo que se encuentra el i posicion.
-# Para saber si un numero es primo, debo ver la
-# cantidad de divisores que tiene.
-# Funciones auxiliares:
-def esDivisor(i, n):
-    esDivisor = 0
-    if i <= n:
-        if i <= 0:
-            esDivisor = 1
-        else:    
-            if n % i != 0:
-                esDivisor = 1
-        if esDivisor == 0:
-            return True
-        else:
-            return False
+import sys 
 
-esDivisor(15,30)
-esDivisor(2,3)
-esDivisor(7,7)
-
-def divisoresPrimos(n):
-    i = 1
-    divisoresPrimos = []
-    while i <= n:
-        if esPrimo(i) == "sí": 
-            if esDivisor(i,n) == True:
-                divisoresPrimos += [i]
-        i += 1
-    return divisoresPrimos
-       
-divisoresPrimos(10)
-
-# Funciones
+# Funciones:
+#1
 def esPrimo(n):
     i = 2 # Empezamos en dos porque todos los numeros se pueden dividir por 1.
     esPrimo = 0
@@ -51,10 +21,8 @@ def esPrimo(n):
     else:
         return "no"
 
-esPrimo(2)
-esPrimo(6)
-
-# Función auxiliar:
+# Funciones auxiliares:
+##
 def numerosPrimos(n):
     i = 2
     numerosPrimos = []
@@ -64,48 +32,85 @@ def numerosPrimos(n):
         i += 1
     return numerosPrimos
 
-numerosPrimos(13)
+##
+def esDivisor(i, n):
+    esDivisor = 0
+    if i <= n:
+        if i <= 0:
+            esDivisor = 1
+        else:    
+            if n % i != 0:
+                esDivisor = 1
+        if esDivisor == 0:
+            return True
+        else:
+            return False
+
+##
+def divisoresPrimos(n):
+    i = 1
+    divisoresPrimos = []
+    while i <= n:
+        if esPrimo(i) == "sí": 
+            if esDivisor(i,n) == True:
+                divisoresPrimos += [i]
+        i += 1
+    return divisoresPrimos
+       
+##
+def iesimoNumeroPrimo(i):
+    n = 1
+    while len(numerosPrimos(n)) < i + 1:
+        n += 1
+    return numerosPrimos(n)[i - 1] 
 
 # Funciones:
+# 2
 def iesimoPrimo(i):
     n = 1
     while len(numerosPrimos(n)) < i + 1:
         n += 1
     return numerosPrimos(n)[i - 1]     
 
-iesimoPrimo(1)
-iesimoPrimo(5)
-
+# 3
 def cantidadPrimosMenoresOIguales(n):
     return len(numerosPrimos(n + 1))
         
-cantidadPrimosMenoresOIguales(6)
-cantidadPrimosMenoresOIguales(7)
-
+# 4
 def cantidadDivisoresPrimos(n):
     return len(divisoresPrimos(n))
  
-cantidadDivisoresPrimos(6)
-cantidadDivisoresPrimos(7)
-
+# 5
 def iesimoDivisorPrimo(n, i):
     if len(divisoresPrimos(n)) < i:
         return (str(n) + " no tiene " + str(i) + " divisores primos")
     else:
         return divisoresPrimos(n)[i - 1]
-
-iesimoDivisorPrimo(10,1)
-iesimoDivisorPrimo(10,2)    
-iesimoDivisorPrimo(10,3)
-
+ 
+# 6
 def sumaPrimerosPrimos(n):
     i = 1
     suma = 0
     while i <= n:
-        suma += + iesimoPrimo(i)
+        suma += + iesimoNumeroPrimo(i)
         i += 1
     return suma
 
-sumaPrimerosPrimos(3)
-sumaPrimerosPrimos(5)
-    
+   
+# Llamado a funciones        
+if __name__ == '__main__':
+    funcion = sys.argv[1]
+    parametro1 = int(sys.argv[2])
+    if funcion == "esPrimo":
+        print(esPrimo(parametro1)) 
+    elif funcion == "iesimoPrimo":
+        print(iesimoPrimo(parametro1))
+    elif funcion == "cantidadPrimosMenoresOIguales":
+        print(cantidadPrimosMenoresOIguales(parametro1))
+    elif funcion == "cantidadDivisoresPrimos":
+        print(cantidadDivisoresPrimos(parametro1))
+    elif funcion == "sumaPrimerosPrimos":
+        print(sumaPrimerosPrimos(parametro1))
+    elif funcion == "iesimoDivisorPrimo":
+        parametro2 = int(sys.argv[3])
+        print(iesimoDivisorPrimo(parametro1, parametro2))
