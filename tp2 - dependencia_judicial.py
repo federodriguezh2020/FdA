@@ -1,6 +1,7 @@
 class DependenciaJudicial:
     
-    def __init__(self, fuero, nombre, tipo_de_ente, direccion, localidad, departamento_judicial, telefono, latitud, longitud):
+    def __init__(self, numero, fuero, nombre, tipo_de_ente, direccion, localidad, departamento_judicial, telefono, latitud, longitud):
+        self._numero = numero
         self._fuero = fuero
         self._nombre = nombre
         self._tipo_de_ente = tipo_de_ente
@@ -8,8 +9,8 @@ class DependenciaJudicial:
         self._localidad = localidad
         self._departamento_judicial = departamento_judicial
         self._telefono = telefono
-        self._latitud = latitud
-        self._longitud = longitud
+        self._latitud = float(latitud)
+        self._longitud = float(longitud)
     
     def fuero(self):
         return self._fuero
@@ -35,11 +36,11 @@ class DependenciaJudicial:
     def latitud(self):
         return self._latitud
     
-    def longitu(self):
+    def longitud(self):
         return self._longitud
     
     def distancia(self, lat, lng):
-        distancia = (((self._latitud - lat)**2 + (self._longitud - lng)**2)/2)**0.5
+        distancia = (((float(self._latitud) - float(lat))**2 + (float(self._longitud) - float(lng))**2)/2)**0.5
         return "%.2f" % float(distancia*157.4)
     
     def __hash__(self):
@@ -59,4 +60,3 @@ class DependenciaJudicial:
     def __repr__(self):
         return "{" + self._fuero + ";" + self._nombre + ";" + self._direccion + ";" + self._localidad + "}"
 
-    
