@@ -40,8 +40,8 @@ class DependenciaJudicial:
         return self._longitud
     
     def distancia(self, lat, lng):
-        distancia = (((float(self._latitud) - float(lat))**2 + (float(self._longitud) - float(lng))**2)/2)**0.5
-        return "%.2f" % float(distancia*157.4)
+        distancia = (((float(self._latitud) - float(lat))**2) + ((float(self._longitud) - float(lng))**2))**0.5
+        return float(distancia)
     
     def __hash__(self):
         return hash((self._fuero, self._nombre, self._tipo_de_ente, self._direccion, self._localidad, self._departamento_judicial, self._latitud, self._longitud))
@@ -56,5 +56,3 @@ class DependenciaJudicial:
     
     def __repr__(self):
         return "{" + self._fuero + ";" + self._nombre + ";" + self._direccion + ";" + self._localidad + "}"
-
-    
