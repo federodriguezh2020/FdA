@@ -54,9 +54,7 @@ class DependenciaJudicial:
                (self._fuero < other._fuero) or \
                (self._nombre < other._nombre)    
     
-    def __str__(self):
-        return self._fuero + "," + self._nombre + "," + self._tipo_de_ente + "," + self._direccion + "," + self._localidad + "," + self._departamento_judicial + "," + self._latitud + "," + self._longitud
-    
     def __repr__(self):
         return "{" + self._fuero + ";" + self._nombre + ";" + self._direccion + ";" + self._localidad + "}"
 
+    
