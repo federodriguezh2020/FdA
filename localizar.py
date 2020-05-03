@@ -25,18 +25,14 @@ def cargar_dependencias(archivo):
 
 dependencias = cargar_dependencias(sys.argv[1])
 
-for dependencia in dependencias:
-    print(dependencia)
-
 latitud = sys.argv[2]
 longitud = sys.argv[3]
 
-distancias = []
+distancias = dict()
 
 for dependencia in dependencias:
-    if dependencia.latitud() != 0 and dependencia.longitud() !=0:
-        distancias.append(dependencia.distancia(latitud, longitud))
-        
-distancias.sort()
-print(distancias[0])
+    distancias[dependencia.distancia(latitud, longitud)] = dependencia
 
+for i in sorted(distancias.keys()) : 
+    print(distancias[i], end ="\n")
+    break
