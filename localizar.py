@@ -3,7 +3,7 @@ import sys
 from dependencia_judicial import DependenciaJudicial
 
 def cargar_dependencias(archivo):
-    dependencias = set()
+    dependencias = []
     archivo = open(archivo, encoding='latin-1')
     for linea in archivo:
         atributos = linea.split(";")
@@ -16,14 +16,17 @@ def cargar_dependencias(archivo):
             localidad = atributos[5]
             departamento_judicial = atributos[6]
             telefono = atributos[7]
-            latitud = float(atributos[8])
-            longitud = float(atributos[9])
+            latitud = float(atributos[8].replace(',','.'))
+            longitud = float(atributos[9].replace(',','.'))
             dependencia = DependenciaJudicial(numero, fuero, nombre, tipo_de_ente, direccion, localidad, departamento_judicial, telefono, latitud, longitud)
-            dependencias.add(dependencia)
+            dependencias.append(dependencia)
     archivo.close()
     return dependencias
 
 dependencias = cargar_dependencias(sys.argv[1])
+
+for dependencia in dependencias:
+    print(dependencia)
 
 latitud = sys.argv[2]
 longitud = sys.argv[3]
@@ -33,6 +36,7 @@ distancias = []
 for dependencia in dependencias:
     if dependencia.latitud() != 0 and dependencia.longitud() !=0:
         distancias.append(dependencia.distancia(latitud, longitud))
-        distancias.sort()
-
+        
+distancias.sort()
 print(distancias[0])
+
