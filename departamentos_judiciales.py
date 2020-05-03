@@ -23,13 +23,24 @@ def cargar_dependencias(archivo):
     archivo.close()
     return dependencias
 
-dependencias = cargar_dependencias(sys.argv[1])
 
+dependencias = cargar_dependencias(sys.argv[1])
 escribir = open(sys.argv[2], "w", encoding="latin-1")
 
-for linea in dependencias:
-    escribir.write(linea.departamento_judicial() + ": ")
-    if linea.departamento_judicial():
-        escribir.write(str(linea))
+departamentos = []
+
+def my_function(x):
+  return list(dict.fromkeys(x))
+
+for departamento in dependencias:
+    departamentos.append(str(departamento.departamento_judicial()))
+departamentos = my_function(departamentos)
+
+for departamento in departamentos:
+    escribir.write(departamento + ": ")
+    for dependencia in dependencias:
+        if dependencia.departamento_judicial() == "AZUL":
+            escribir.write(str(dependencia))
+    escribir.write("\n")
     escribir.write("\n")
 escribir.close()
