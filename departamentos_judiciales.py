@@ -27,6 +27,8 @@ def cargar_dependencias(archivo):
 dependencias = cargar_dependencias(sys.argv[1])
 escribir = open(sys.argv[2], "w", encoding="latin-1")
 
+dependencias = sorted(dependencias)
+
 departamentos = []
 
 def my_function(x):
@@ -39,7 +41,7 @@ departamentos = my_function(departamentos)
 for departamento in departamentos:
     escribir.write(departamento + ": ")
     for dependencia in dependencias:
-        if dependencia.departamento_judicial() == "AZUL":
+        if dependencia.departamento_judicial() == departamento:
             escribir.write(str(dependencia))
     escribir.write("\n")
     escribir.write("\n")
