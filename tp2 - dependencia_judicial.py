@@ -50,9 +50,9 @@ class DependenciaJudicial:
         return self._fuero == other._fuero and self._nombre == other._nombre and self._departamento_judicial == other._departamento_judicial
     
     def __lt__(self, other):
-        return (self._departamento_judicial < other._departamento_judicial) or \
-               (self._fuero < other._fuero) or \
-               (self._nombre < other._nombre)    
+        return self._departamento_judicial < other._departamento_judicial or \
+               self._departamento_judicial == other._departamento_judicial and self._fuero < other._fuero or \
+               self._departamento_judicial == other._departamento_judicial and self._fuero == other._fuero and self._nombre < other._nombre    
     
     def __repr__(self):
         return "{" + self._fuero + ";" + self._nombre + ";" + self._direccion + ";" + self._localidad + "}"
