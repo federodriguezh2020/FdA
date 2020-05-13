@@ -3,18 +3,19 @@
 class DependenciaJudicial:
     
     # Función que se ejecuta al crear un nuevo elemento de tipo DependenciaJudicial:
-    # La linea representa cada una de las dependencias judiciales:
-    def __init__(self, numero, fuero, nombre, tipo_de_ente, direccion, localidad, departamento_judicial, telefono, latitud, longitud):
-        self._numero = numero
-        self._fuero = fuero
-        self._nombre = nombre
-        self._tipo_de_ente = tipo_de_ente
-        self._direccion = direccion
-        self._localidad = localidad
-        self._departamento_judicial = departamento_judicial
-        self._telefono = telefono
-        self._latitud = float(latitud)
-        self._longitud = float(longitud)
+    # dependencia representa cada una de las dependencias judiciales y v cada uno de los atributos:
+    def __init__(self, linea):
+        v = dependencia.split(";")
+        self._numero = v[0]
+        self._fuero = v[1]
+        self._nombre = v[2]
+        self._tipo_de_ente = v[3]
+        self._direccion = v[4]
+        self._localidad = v[5]
+        self._departamento_judicial = v[6]
+        self._telefono = v[7]
+        self._latitud = float(v[8].replace(',','.'))
+        self._longitud = float(v[9].replace(',','.'))
     
     # Devuelve el fuero de una dependencia judicial.
     def fuero(self):
