@@ -13,10 +13,8 @@ def cargar_dependencias(archivo):
         if numero != "Número":
             fuero = atributos[1]
             nombre = atributos[2]
-            tipo_de_ente = atributos[3]
             direccion = atributos[4]
             localidad = atributos[5]
-            departamento_judicial = atributos[6]
             telefono = atributos[7]
             latitud = float(atributos[8].replace(',','.'))
             longitud = float(atributos[9].replace(',','.'))
