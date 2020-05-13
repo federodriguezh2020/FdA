@@ -5,20 +5,21 @@ from dependencia_judicial import DependenciaJudicial
 
 # Definimos una funcion que cargue las dependencias judiciales del archivo que se le pasa como argumento. 
 def cargar_dependencias(archivo):
-    dependencias = []
-    archivo = open(archivo, encoding='latin-1')
+    dependencias = [] # Creamos una lista vacía para guardar cada una de las dependencias.
+    archivo = open(archivo, encoding='latin-1') # Abrimos el archivo que el usuario pasa como argumento.
+    # Cargamos solo los atributos que consideramos necesarios para la resolución de este ejercicio.
     for linea in archivo:
         atributos = linea.split(";")
         numero = atributos[0]
+        # Hacemos un if para que la fila que indica el nombre de la columna no se guarde.
         if numero != "Número":
             fuero = atributos[1]
             nombre = atributos[2]
             direccion = atributos[4]
             localidad = atributos[5]
-            telefono = atributos[7]
             latitud = float(atributos[8].replace(',','.'))
             longitud = float(atributos[9].replace(',','.'))
-            dependencia = DependenciaJudicial(numero, fuero, nombre, tipo_de_ente, direccion, localidad, departamento_judicial, telefono, latitud, longitud)
+            dependencia = DependenciaJudicial(dependencia)
             dependencias.append(dependencia)
     archivo.close()
     return dependencias
