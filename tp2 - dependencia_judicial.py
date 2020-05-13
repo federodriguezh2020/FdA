@@ -3,6 +3,7 @@
 class DependenciaJudicial:
     
     # Función que se ejecuta al crear un nuevo elemento de tipo DependenciaJudicial:
+    # La linea representa cada una de las dependencias judiciales:
     def __init__(self, numero, fuero, nombre, tipo_de_ente, direccion, localidad, departamento_judicial, telefono, latitud, longitud):
         self._numero = numero
         self._fuero = fuero
