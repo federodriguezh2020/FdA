@@ -19,7 +19,7 @@ def cargar_dependencias(archivo):
             localidad = atributos[5]
             latitud = float(atributos[8].replace(',','.'))
             longitud = float(atributos[9].replace(',','.'))
-            dependencia = DependenciaJudicial(dependencia)
+            dependencia = DependenciaJudicial(linea)
             dependencias.append(dependencia)
     archivo.close()
     return dependencias
@@ -27,7 +27,8 @@ def cargar_dependencias(archivo):
 # Cargo el archivo que le paso despues de python en la consola y lo guardo en dependencias:
 dependencias = cargar_dependencias(sys.argv[1])
 
-# Le indico que luego del archivo le paso la latitud y la longitud en la consola y lo guardo en latitud y longitud respectivamente:
+# Le indico que luego del archivo le paso la latitud y la longitud en la consola 
+# y lo guardo en latitud y longitud respectivamente:
 latitud = sys.argv[2]
 longitud = sys.argv[3]
 
