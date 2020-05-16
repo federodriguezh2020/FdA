@@ -3,9 +3,9 @@
 class DependenciaJudicial:
     
     # Función que se ejecuta al crear un nuevo elemento de tipo DependenciaJudicial:
-    # dependencia representa cada una de las dependencias judiciales y v cada uno de los atributos:
+    # linea representa cada una de las dependencias judiciales y v cada uno de los atributos:
     def __init__(self, linea):
-        v = dependencia.split(";")
+        v = linea.split(";")
         self._numero = v[0]
         self._fuero = v[1]
         self._nombre = v[2]
